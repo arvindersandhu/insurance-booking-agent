@@ -1,0 +1,30 @@
+# Render Blueprint — one-click deploy for the Instagram booking agent.
+# In Render: New -> Blueprint, connect the GitHub repo holding this folder.
+# Render creates the web service below; secrets are filled in on the
+# Environment tab afterwards (they are never written in this file).
+services:
+  - type: web
+    name: instagram-booking-agent
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: TIMEZONE
+        value: America/Regina
+      - key: META_VERIFY_TOKEN
+        sync: false
+      - key: IG_PAGE_ACCESS_TOKEN
+        sync: false
+      - key: IG_USER_ID
+        sync: false
+      - key: GOOGLE_CLIENT_EMAIL
+        sync: false
+      - key: GOOGLE_PRIVATE_KEY
+        sync: false
+      - key: GOOGLE_CALENDAR_ID
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
